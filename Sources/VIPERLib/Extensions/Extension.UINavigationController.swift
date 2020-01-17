@@ -10,7 +10,7 @@ import UIKit
 
 // ...........
 
-extension UINavigationController {
+public extension UINavigationController {
     
     func push(module: Module, animated: Bool = true) {
         pushViewController(module.getController(), animated: animated)

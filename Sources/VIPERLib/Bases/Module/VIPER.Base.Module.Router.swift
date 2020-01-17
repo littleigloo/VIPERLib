@@ -42,25 +42,25 @@ open class Router: RouterInterface {
     
     // Present
     
-    func present(module: Module, animated: Bool = true, completion: (() -> Void)? = nil) {
+    public func present(module: Module, animated: Bool = true, completion: (() -> Void)? = nil) {
         controller.present(module: module, animated: animated, completion: completion)
     }
     
     // ...........
     
-    func dismiss(animated: Bool, completion: (() -> Void)? = nil )  {
+    public func dismiss(animated: Bool, completion: (() -> Void)? = nil )  {
         navigationController?.dismiss(animated: animated, completion: completion)
     }
     
     // Push
     
-    func push(module: Module, animated: Bool = true) {
+    public func push(module: Module, animated: Bool = true) {
         navigationController?.push(module: module, animated: animated)
     }
     
     // ...........
     
-    func popModule(animated: Bool) {
+    public func popModule(animated: Bool) {
         navigationController?.popViewController(animated: animated)
     }
 }
