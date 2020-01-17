@@ -1,3 +1,3 @@
 # VIPERLib
 
-A description of this package.
+Swift Package 📦 Library that helps you implementing the VIPER architecture.
