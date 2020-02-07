@@ -30,7 +30,7 @@ open class Presenter<Module: ModuleInterface>: PresenterInterface {
 
     // ...........
     
-    private(set) public var model: Module.Model {
+    private(set) public var model: Module.Model? {
         didSet {
             didModelUpdated()
         }
@@ -47,7 +47,7 @@ open class Presenter<Module: ModuleInterface>: PresenterInterface {
     required public init(controller: Module.PresenterToControllerInterface,
                   interactor: Module.PresenterToInteractorInterface,
                   router: Module.PresenterToRouterInterface,
-                  model: Module.Model,
+                  model: Module.Model?,
                   moduleDelegate: Module.DelegateInterface?) {
         
         _controller = controller as AnyObject

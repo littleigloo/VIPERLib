@@ -49,14 +49,14 @@ public extension ModuleInterface {
     //  MARK: - METHODS 🌐 PUBLIC
     // ///////////////////////////////////////////
     
-    static func get(with model: Model, moduleDelegate delegate: DelegateInterface? = nil, connectTo moduleInput: InputBinder? = nil) -> UIViewController {
+    static func get(with model: Model? = nil, moduleDelegate delegate: DelegateInterface? = nil, connectTo moduleInput: InputBinder? = nil) -> UIViewController {
         return assemble(model: model, moduleDelegate: delegate, connectTo: moduleInput)
     }
     
     //  MARK: - METHODS 🔰 PRIVATE
     // ///////////////////////////////////////////
 
-    private static func assemble(model: Model, moduleDelegate delegate: DelegateInterface?, connectTo moduleInput: InputBinder?) -> UIViewController {
+    private static func assemble(model: Model?, moduleDelegate delegate: DelegateInterface?, connectTo moduleInput: InputBinder?) -> UIViewController {
         
         // Create UNIT'S INPUT interface.
         let unitInterface = OutputTo<Unit.InputInterface>()

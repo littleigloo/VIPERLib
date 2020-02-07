@@ -56,7 +56,11 @@ open class Controller<Module: ModuleInterface>: UIViewController, ControllerInte
             return
         }
         
-        guard let viewModel = viewModel(from: presenter.model) else {
+        guard let presenterModel = presenter.model else {
+            return
+        }
+        
+        guard let viewModel = viewModel(from: presenterModel) else {
             print("NO VIEW MODEL PROVIDED INSIDE CONTROLLER.")
             return
         }

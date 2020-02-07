@@ -18,9 +18,9 @@ public protocol PresenterInterface: ControllerToPresenterInterface {
     var controller: Controller { get }
     var interactor: Interactor { get }
     var router: Router { get }
-    var model: Model { get }
+    var model: Model? { get }
     var moduleDelegate: ModuleDelegate? { get }
-    init(controller: Controller, interactor: Interactor, router: Router, model: Model, moduleDelegate: ModuleDelegate?)
+    init(controller: Controller, interactor: Interactor, router: Router, model: Model?, moduleDelegate: ModuleDelegate?)
 }
 
 //                                      MARK: - IN/OUT TRANSITIONS
