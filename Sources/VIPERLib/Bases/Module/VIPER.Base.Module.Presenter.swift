@@ -68,7 +68,8 @@ open class Presenter<Module: ModuleInterface>: PresenterInterface {
     // ///////////////////////////////////////////
     
     @objc
-    dynamic public func viewDidLoad() {
+    dynamic
+    open func viewDidLoad() {
         fatalError("Implementation pending...")
     }
     
@@ -76,7 +77,7 @@ open class Presenter<Module: ModuleInterface>: PresenterInterface {
 
     @objc
     dynamic
-    public func viewWillAppear(animated: Bool) {
+    open func viewWillAppear(animated: Bool) {
         fatalError("Implementation pending...")
     }
     
@@ -84,7 +85,7 @@ open class Presenter<Module: ModuleInterface>: PresenterInterface {
 
     @objc
     dynamic
-    public func viewDidAppear(animated: Bool) {
+    open func viewDidAppear(animated: Bool) {
         fatalError("Implementation pending...")
     }
     
@@ -92,7 +93,7 @@ open class Presenter<Module: ModuleInterface>: PresenterInterface {
 
     @objc
     dynamic
-    public func viewWillDisappear(animated: Bool) {
+    open func viewWillDisappear(animated: Bool) {
         fatalError("Implementation pending...")
     }
     
@@ -100,7 +101,7 @@ open class Presenter<Module: ModuleInterface>: PresenterInterface {
 
     @objc
     dynamic 
-    public func viewDidDisappear(animated: Bool) {
+    open func viewDidDisappear(animated: Bool) {
         fatalError("Implementation pending...")
     }
     

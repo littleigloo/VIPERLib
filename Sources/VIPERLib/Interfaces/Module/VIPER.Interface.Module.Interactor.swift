@@ -6,11 +6,17 @@
 //  Copyright © 2019 Neiron Digital. All rights reserved.
 //
 
+import UIKit
+
+// ...........
+
 //                                      MARK: - INTERFACE
 //..............................................................................................
 
 public protocol InteractorInterface: PresenterToInteractorInterface {
-    init()
+    associatedtype Controller
+    var controller: Presentative { get }
+    init(controller: Controller)
 }
 
 //                                      MARK: - IN/OUT TRANSITIONS

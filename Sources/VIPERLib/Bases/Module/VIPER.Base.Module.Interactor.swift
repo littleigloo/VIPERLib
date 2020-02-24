@@ -6,12 +6,30 @@
 //  Copyright © 2019 Neiron Digital. All rights reserved.
 //
 
-open class Interactor: InteractorInterface {
+import UIKit
+
+// ...........
+
+open class Interactor<Module: ModuleInterface>: InteractorInterface {
+    
+    //  MARK: - PROPERTIES 🌐 PUBLIC
+    // ////////////////////////////////////
+    
+    public var controller: Presentative {
+        return _controller as! Presentative
+    }
+    
+    //  MARK: - METHODS 🔰 PRIVATE
+    // ///////////////////////////////////////////
+
+    private unowned let _controller: Module.Controller
     
     //  MARK: - INITS
     // ////////////////////////////////////
     
-    required public init() {}
+    required public init(controller: Module.Controller) {
+        _controller = controller
+    }
     
     //  MARK: - LIFECYCLE
     // ////////////////////////////////////

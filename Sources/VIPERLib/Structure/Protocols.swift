@@ -10,7 +10,6 @@ import UIKit
 
 // ...........
 
-protocol Prepresentative {
+public protocol Presentative {
     func present(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?)
 }
-

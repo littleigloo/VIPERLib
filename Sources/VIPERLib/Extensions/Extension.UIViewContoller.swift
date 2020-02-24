@@ -16,3 +16,7 @@ extension UIViewController {
         present(module.getController(), animated: animated, completion: completion)
     }
 }
+
+// ...........
+
+extension UIViewController: Presentative {}

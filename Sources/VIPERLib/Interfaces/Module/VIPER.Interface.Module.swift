@@ -72,8 +72,13 @@ public extension ModuleInterface {
         // Get VIEW from UNIT with UNIT DELEGATE and UNIT INPUT.
         let view = Unit.get(unitDelegate: unitDelegate, connectTo: unitInterface)
         
+        // Prepare INTERACTORS'S CONTROLLER.
+        guard let interactorController = controller as? Interactor.Controller else {
+            fatalError("MODULE CONTROLLER DOES NOT CONFORM TO: \(Interactor.Controller.self)")
+        }
+        
         // Create INTERACTOR.
-        let interactor = Interactor()
+        let interactor = Interactor(controller: interactorController)
         
         // Prepare ROUTER'S CONTROLLER.
         guard let routerController = controller as? Router.Controller else {
