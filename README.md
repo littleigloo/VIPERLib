@@ -1,4 +1,4 @@
-![VIPERLib](Images/illustration.png)
+![VIPERLib](Images/illustration.png | width=300)
 
 # VIPERLib
 
