@@ -1,4 +1,6 @@
-![VIPERLib](Images/illustration.png | width=300)
+<p align="center">
+    <img src="Images/illustration.png" width="300">
+</p>
 
 # VIPERLib
 
