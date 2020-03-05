@@ -10,6 +10,6 @@ import UIKit
 
 // ...........
 
-public protocol Presentative {
+public protocol ViewPresenter {
     func present(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?)
 }

@@ -15,7 +15,7 @@ import UIKit
 
 public protocol InteractorInterface: PresenterToInteractorInterface {
     associatedtype Controller
-    var controller: Presentative { get }
+    var viewPresenter: ViewPresenter { get }
     init(controller: Controller)
 }
 

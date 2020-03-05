@@ -19,4 +19,4 @@ extension UIViewController {
 
 // ...........
 
-extension UIViewController: Presentative {}
+extension UIViewController: ViewPresenter {}

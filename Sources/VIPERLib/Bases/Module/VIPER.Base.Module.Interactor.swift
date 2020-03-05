@@ -15,8 +15,8 @@ open class Interactor<Module: ModuleInterface>: InteractorInterface {
     //  MARK: - PROPERTIES 🌐 PUBLIC
     // ////////////////////////////////////
     
-    public var controller: Presentative {
-        return _controller as! Presentative
+    public var viewPresenter: ViewPresenter {
+        return _controller as! ViewPresenter
     }
     
     //  MARK: - METHODS 🔰 PRIVATE
