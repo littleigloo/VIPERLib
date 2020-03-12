@@ -5,3 +5,5 @@
 # VIPERLib
 
 Swift Package 📦 Library that helps you implementing the VIPER architecture.
+
+![VIPER Scheme](Images/VIPER.png)
