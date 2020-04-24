@@ -60,7 +60,7 @@ open class Router: RouterInterface {
     
     // ...........
     
-    public func popModule(animated: Bool) {
+    public func popModule(animated: Bool = true) {
         navigationController?.popViewController(animated: animated)
     }
 }

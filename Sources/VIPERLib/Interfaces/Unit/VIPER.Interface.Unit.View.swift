@@ -9,7 +9,7 @@
 //                                      MARK: - INTERFACE
 //..............................................................................................
 
-public protocol ViewInterface: ControllerToViewInterface {
+public protocol ViewInterface: PresenterToViewInterface {
     associatedtype Presenter
     associatedtype Model
     var presenter: Presenter { get }
@@ -20,7 +20,7 @@ public protocol ViewInterface: ControllerToViewInterface {
 //                                      MARK: - IN/OUT TRANSITIONS
 //..............................................................................................
 
-public protocol ControllerToViewInterface: class {
+public protocol PresenterToViewInterface: class {
     associatedtype Model
     func set(model: Model)
 }
