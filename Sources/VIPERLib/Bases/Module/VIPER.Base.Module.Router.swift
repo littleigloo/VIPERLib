@@ -7,60 +7,73 @@
 //
 
 import UIKit
-
 // ...........
 
 open class Router: RouterInterface {
-    
     //  MARK: - METHODS 🔰 PRIVATE
     // ///////////////////////////////////////////
-
     private unowned let controller: UIViewController
     
     // ...........
-    
     private var navigationController: UINavigationController? {
         return controller.navigationController
     }
     
     //  MARK: - INITS
     // ////////////////////////////////////
-    
     required public init(controller: UIViewController) {
         self.controller = controller
     }
     
     //  MARK: - LIFECYCLE
     // ////////////////////////////////////
-    
     deinit {
         print("DEINIT ROUTER:     \(Self.self)")
     }
     
     //  MARK: - METHODS 🌐 PUBLIC
     // ///////////////////////////////////////////
-    
     // Present
-    
-    public func present(module: Module, animated: Bool = true, completion: (() -> Void)? = nil) {
-        controller.present(module: module, animated: animated, completion: completion)
+    public func present(module: Module, isAnimated: Bool = true, completion: (() -> Void)? = nil) {
+        controller.present(module: module, isAnimated: isAnimated, completion: completion)
     }
-    
     // ...........
     
-    public func dismiss(animated: Bool, completion: (() -> Void)? = nil )  {
-        navigationController?.dismiss(animated: animated, completion: completion)
+    public func dismiss(isAnimated: Bool, completion: (() -> Void)? = nil )  {
+        navigationController?.dismiss(animated: isAnimated, completion: completion)
     }
-    
+
     // Push
-    
-    public func push(module: Module, animated: Bool = true) {
-        navigationController?.push(module: module, animated: animated)
+    public func push(module: Module, isAnimated: Bool = true) {
+        navigationController?.push(module: module, isAnimated: isAnimated)
     }
-    
     // ...........
     
-    public func popModule(animated: Bool = true) {
-        navigationController?.popViewController(animated: animated)
+    public func popModule(isAnimated: Bool = true) {
+        navigationController?.popViewController(animated: isAnimated)
+    }
+    
+    // Window
+    public func newRoot(module: Module, isAnimated: Bool = true, completion: (() -> Void)? = nil) {
+        // Get main window
+        guard let window = UIApplication.shared.keyWindow else {
+            return
+        }
+        // Set the new rootViewController of the window
+        // Calling "UIView.transition" below will animate the swap
+        window.rootViewController = module.getController()
+        // Check if animation needed
+        guard isAnimated else {
+            completion?()
+            return
+        }
+        // A mask of options indicating how you want to perform the animations
+        let options: UIView.AnimationOptions = .transitionCrossDissolve
+        // The duration of the transition animation, measured in seconds
+        let duration: TimeInterval = 0.3
+        // Create a transition animation
+        UIView.transition(with: window, duration: duration, options: options, animations: {}) { _ in
+            completion?()
+        }
     }
 }

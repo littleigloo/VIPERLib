@@ -37,4 +37,10 @@ public class OutputTo<T>: InOutBinderProtocol {
     // ////////////////////////////////////
     
     private weak var _input: AnyObject?
+    
+    //  MARK: - INITS
+    // ////////////////////////////////////
+    public init() {
+        
+    }
 }

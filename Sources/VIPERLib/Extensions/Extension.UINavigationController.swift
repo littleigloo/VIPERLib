@@ -7,18 +7,22 @@
 //
 
 import UIKit
-
 // ...........
 
 public extension UINavigationController {
-    
-    func push(module: Module, animated: Bool = true) {
-        pushViewController(module.getController(), animated: animated)
-    }
-    
     // ...........
-    
+    func push(module: Module, isAnimated: Bool = true) {
+        pushViewController(module.getController(), animated: isAnimated)
+    }
+    // ...........
     func setRootModule(_ module: Module, animated: Bool = true) {
         setViewControllers([module.getController()], animated: animated)
+    }
+}
+// ...........
+
+extension UINavigationController: Module {
+    public func getController() -> UIViewController {
+        self
     }
 }

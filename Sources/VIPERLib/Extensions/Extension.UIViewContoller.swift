@@ -7,16 +7,11 @@
 //
 
 import UIKit
-
 // ...........
-
 extension UIViewController {
-    
-    func present(module: Module, animated: Bool = true, completion: (() -> Void)? = nil) {
-        present(module.getController(), animated: animated, completion: completion)
+    func present(module: Module, isAnimated: Bool = true, completion: (() -> Void)? = nil) {
+        present(module.getController(), animated: isAnimated, completion: completion)
     }
 }
-
 // ...........
-
 extension UIViewController: ViewPresenter {}
