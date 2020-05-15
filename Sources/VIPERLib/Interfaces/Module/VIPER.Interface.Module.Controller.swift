@@ -6,6 +6,8 @@
 //  Copyright © 2019 Neiron Digital. All rights reserved.
 //
 
+import UIKit
+
 //                                      MARK: - INTERFACE
 //..............................................................................................
 
@@ -18,6 +20,7 @@ public protocol ControllerInterface: PresenterToControllerInterface, ViewToContr
     func bind(withPresenter presenter: Presenter)
     func bind(withView view: View)
     func bind(withUnit unitInterface: OutputTo<UnitInterface>)
+    func assignTextFields(_ textFields: [UITextField])
     init()
 }
 

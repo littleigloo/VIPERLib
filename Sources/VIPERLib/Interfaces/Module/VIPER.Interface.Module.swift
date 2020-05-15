@@ -163,6 +163,12 @@ public extension ModuleInterface {
             fatalError("CANNOT CAST CONTROLLER TO UIViewController")
         }
         
+        // Assign textfields
+        let textFields = view.provideTextFields()
+        if !textFields.isEmpty {
+            controller.assignTextFields(textFields)
+        }
+        
         // Return as UIViewController.
         return viewController
     }

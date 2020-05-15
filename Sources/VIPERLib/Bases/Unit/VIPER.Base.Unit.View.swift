@@ -85,4 +85,10 @@ open class View<Unit: UnitInterface>: UIView, ViewInterface {
     open func didSet(model: Unit.ViewModel) {
         // Override inside subclass
     }
+    
+    // ...........
+    
+    open func provideTextFields() -> [UITextField] {
+        return []
+    }
 }

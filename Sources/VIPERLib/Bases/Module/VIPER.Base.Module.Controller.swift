@@ -10,8 +10,8 @@ import UIKit
 
 // ...........
 
-open class Controller<Module: ModuleInterface>: UIViewController, ControllerInterface {
-    
+open class Controller<Module: ModuleInterface>: UIViewController, ControllerInterface, UITextFieldDelegate, UIGestureRecognizerDelegate {
+
     //  MARK: - PROPERTIES 🌐 PUBLIC
     // ////////////////////////////////////
 
@@ -37,6 +37,10 @@ open class Controller<Module: ModuleInterface>: UIViewController, ControllerInte
     private var isPresenterSet      = false
     private var isViewSet           = false
     private var isUnitPresenterSet  = false
+    
+    // ...........
+    
+    var dismissControllsTapRecognizer: UITapGestureRecognizer?
 
     //  MARK: - LIFECYCLE
     // ////////////////////////////////////
@@ -117,8 +121,67 @@ open class Controller<Module: ModuleInterface>: UIViewController, ControllerInte
     
     // ...........
     
+    public func assignTextFields(_ textFields: [UITextField]) {
+        // Create recognizer
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(dismissControlls))
+        recognizer.cancelsTouchesInView = false
+        recognizer.isEnabled = false
+        recognizer.delegate = self
+        dismissControllsTapRecognizer = recognizer
+        view.addGestureRecognizer(recognizer)
+        // Set delegates
+        textFields.forEach({$0.delegate = self})
+    }
+
+    // ...........
+    
     open func viewModel(from model: Module.Model) -> Module.Unit.ViewModel? {
         // Override inside subclass
         return nil
+    }
+    
+    // ...........
+    @objc func dismissControlls() {
+        view.endEditing(true)
+    }
+    // ...........
+    fileprivate func endEditing() {
+        dismissControlls()
+        disableDismissControllsTapRecognizer()
+    }
+    // ...........
+    fileprivate func disableDismissControllsTapRecognizer() {
+        dismissControllsTapRecognizer?.isEnabled = false
+    }
+    // ...........
+    fileprivate func enableDismissControllsTapRecognizer() {
+        dismissControllsTapRecognizer?.isEnabled = true
+    }
+    // ...........
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        endEditing()
+        return true
+    }
+    // ...........
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
+        enableDismissControllsTapRecognizer()
+        if let delegate = view as? UITextFieldDelegate {
+            delegate.textFieldDidBeginEditing?(textField)
+        }
+    }
+    // ...........
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        endEditing()
+        if let delegate = view as? UITextFieldDelegate {
+            delegate.textFieldDidEndEditing?(textField)
+        }
+    }
+    // ...........
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        guard let delegate = view as? UIGestureRecognizerDelegate,
+            let value = delegate.gestureRecognizer?(gestureRecognizer, shouldReceive: touch) else {
+            return true
+        }
+        return value
     }
 }

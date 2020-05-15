@@ -6,6 +6,8 @@
 //  Copyright © 2019 Neiron Digital. All rights reserved.
 //
 
+import UIKit
+
 //                                      MARK: - INTERFACE
 //..............................................................................................
 
@@ -15,6 +17,7 @@ public protocol ViewInterface: PresenterToViewInterface {
     var presenter: Presenter { get }
     var model: Model? { get }
     func bind(with presenter: Presenter)
+    func provideTextFields() -> [UITextField]
 }
 
 //                                      MARK: - IN/OUT TRANSITIONS
