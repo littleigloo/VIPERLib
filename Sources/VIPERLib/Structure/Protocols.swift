@@ -7,9 +7,12 @@
 //
 
 import UIKit
-
 // ...........
 
 public protocol ViewPresenter: class {
     func present(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?)
+}
+// ...........
+public protocol PresentationSylable: UIViewController {
+    var controllerPresentationStyle: ControllerPresentationStyle? { get set }
 }

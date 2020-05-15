@@ -10,37 +10,28 @@ import UIKit
 
 // ...........
 
-open class Controller<Module: ModuleInterface>: UIViewController, ControllerInterface, UITextFieldDelegate, UIGestureRecognizerDelegate {
-
+open class Controller<Module: ModuleInterface>: UIViewController, ControllerInterface, UITextFieldDelegate, UIGestureRecognizerDelegate, PresentationSylable {
     //  MARK: - PROPERTIES 🌐 PUBLIC
     // ////////////////////////////////////
-
     private(set) public var presenter: Module.ControllerToPresenterInterface?
-    
     // ...........
-    
     private weak var _presenter: Module.Presenter? {
         return presenter as? Module.Presenter
     }
-    
     // ...........
-    
     public var rootUnit: OutputTo<Module.Unit.InputInterface>?
+    // ...........
+    public var controllerPresentationStyle: ControllerPresentationStyle?
     
     //  MARK: - PROPERTIES 🔰 PRIVATE
     // ////////////////////////////////////
-
     private var temporaryRootView: Module.Unit.View?
-    
     // ...........
-    
     private var isPresenterSet      = false
     private var isViewSet           = false
     private var isUnitPresenterSet  = false
-    
     // ...........
-    
-    var dismissControllsTapRecognizer: UITapGestureRecognizer?
+    private var dismissControllsTapRecognizer: UITapGestureRecognizer?
 
     //  MARK: - LIFECYCLE
     // ////////////////////////////////////

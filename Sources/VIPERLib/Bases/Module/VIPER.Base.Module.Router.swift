@@ -52,6 +52,21 @@ open class Router: RouterInterface {
     public func popModule(isAnimated: Bool = true) {
         navigationController?.popViewController(animated: isAnimated)
     }
+    // ...........
+    
+    public func fadeTo(module: Module) {
+        navigationController?.fadeTo(module: module)
+    }
+    // ...........
+    
+    public func unfade() {
+        navigationController?.unfade()
+    }
+    // ...........
+    
+    public func hideSuitably() {
+        controller.hideSuitably()
+    }
     
     // Window
     public func newRoot(module: Module, isAnimated: Bool = true, completion: (() -> Void)? = nil) {
@@ -77,3 +92,4 @@ open class Router: RouterInterface {
         }
     }
 }
+

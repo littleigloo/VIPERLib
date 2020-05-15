@@ -12,11 +12,32 @@ import UIKit
 public extension UINavigationController {
     // ...........
     func push(module: Module, isAnimated: Bool = true) {
-        pushViewController(module.getController(), animated: isAnimated)
+        let vc = module.getController()
+        if let presentationSylable = (vc as? PresentationSylable) {
+            presentationSylable.controllerPresentationStyle = .pushed(.default)
+        }
+        pushViewController(vc, animated: isAnimated)
     }
     // ...........
-    func setRootModule(_ module: Module, animated: Bool = true) {
-        setViewControllers([module.getController()], animated: animated)
+    func fadeTo(module: Module) {
+        let vc = module.getController()
+        if let presentationSylable = (vc as? PresentationSylable) {
+            presentationSylable.controllerPresentationStyle = .pushed(.fade)
+        }
+        let transition: CATransition = CATransition()
+        transition.duration = 0.15
+        transition.type = CATransitionType.fade
+        view.layer.add(transition, forKey: nil)
+        pushViewController(vc, animated: false)
+    }
+    // ...........
+    func unfade() {
+        let transition: CATransition = CATransition()
+        transition.duration = 0.15
+        transition.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        transition.type = CATransitionType.fade
+        view.layer.add(transition, forKey: nil)
+        popViewController(animated: false)
     }
 }
 // ...........
