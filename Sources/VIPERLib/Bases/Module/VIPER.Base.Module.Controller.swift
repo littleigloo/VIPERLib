@@ -55,8 +55,9 @@ open class Controller<Module: ModuleInterface>: UIViewController, ControllerInte
             return
         }
         
+        didSet(model: presenterModel)
+        
         guard let viewModel = viewModel(from: presenterModel) else {
-            print("NO VIEW MODEL PROVIDED INSIDE CONTROLLER.")
             return
         }
         
@@ -123,7 +124,11 @@ open class Controller<Module: ModuleInterface>: UIViewController, ControllerInte
         // Set delegates
         textFields.forEach({$0.delegate = self})
     }
-
+    // ...........
+    
+    open func didSet(model: Module.Model) {
+        // Override inside subclass
+    }
     // ...........
     
     open func viewModel(from model: Module.Model) -> Module.Unit.ViewModel? {

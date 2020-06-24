@@ -68,7 +68,6 @@ public extension ModuleInterface {
         guard let unitDelegate = controller as? Unit.DelegateInterface else {
             fatalError("MODULE CONTROLLER DOES NOT CONFORM TO: \(Unit.DelegateInterface.self)")
         }
-        
         // Get VIEW from UNIT with UNIT DELEGATE and UNIT INPUT.
         let view = Unit.get(unitDelegate: unitDelegate, connectTo: unitInterface)
         

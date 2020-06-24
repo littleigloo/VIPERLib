@@ -44,7 +44,6 @@ public extension UnitInterface {
     // ///////////////////////////////////////////
     
     static func get(with viewModel: ViewModel? = nil, unitDelegate delegate: DelegateInterface? = nil, connectTo unitInput: InputBinder? = nil) -> View {
-        
         // Create VIEW.
         let view = View.fromNib()
         

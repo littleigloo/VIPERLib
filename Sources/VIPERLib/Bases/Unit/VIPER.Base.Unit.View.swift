@@ -44,7 +44,6 @@ open class View<Unit: UnitInterface>: UIView, ViewInterface {
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        
         didAwake(with: model)
     }
     
