@@ -14,6 +14,7 @@ public extension UINavigationController {
     enum GoBackStyle {
         case pop
         case unfade
+        case unslide
     }
     //  MARK: - METHODS 🌐 PUBLIC
     // ///////////////////////////////////////////
@@ -47,15 +48,47 @@ public extension UINavigationController {
         view.layer.add(transition, forKey: nil)
         popViewController(animated: false)
     }
+    // ...........
+    
+    func slide(module: Module) {
+        let vc = module.getController()
+        if let presentationSylable = (vc as? PresentationSylable) {
+            presentationSylable.controllerPresentationStyle = .pushed(.slide)
+        }
+        let transition: CATransition = CATransition()
+        transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        transition.type = CATransitionType.moveIn
+        transition.subtype = CATransitionSubtype.fromTop
+        view.layer.add(transition, forKey: kCATransition)
+        pushViewController(vc, animated: false)
+    }
+    // ...........
+    
+    func unslide() {
+        let transition: CATransition = CATransition()
+        transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        transition.type = CATransitionType.reveal
+        transition.subtype = CATransitionSubtype.fromBottom
+        view.layer.add(transition, forKey: kCATransition)
+        popViewController(animated: false)
+    }
+    // ...........
     
     // Pop to controller
     func pop<T: UIViewController>(to controllerType: T.Type) {
         goBack(to: controllerType, style: .pop)
     }
     
-    // Unfate to controller
+    // Unfade to controller
     func unfade<T: UIViewController>(to controllerType: T.Type) {
         goBack(to: controllerType, style: .unfade)
+    }
+    
+    // Unslide to controller
+    func unslide<T: UIViewController>(to controllerType: T.Type) {
+        goBack(to: controllerType, style: .unslide)
     }
     
     // Controllers stack
@@ -88,6 +121,17 @@ public extension UINavigationController {
                 view.layer.add(transition, forKey: nil)
             }
             setViewControllers(controllersList, animated: false)
+            // ...........
+        case .slide:
+            if isAnimated {
+                let transition: CATransition = CATransition()
+                transition.duration = 0.3
+                transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+                transition.type = CATransitionType.moveIn
+                transition.subtype = CATransitionSubtype.fromTop
+                view.layer.add(transition, forKey: nil)
+            }
+            setViewControllers(controllersList, animated: false)
         }
     }
     
@@ -100,6 +144,8 @@ public extension UINavigationController {
                 case .pop:
                     popToViewController(vc, animated: true)
                 case .unfade:
+                    popToViewController(vc, animated: false)
+                case .unslide:
                     popToViewController(vc, animated: false)
                 }
                 return

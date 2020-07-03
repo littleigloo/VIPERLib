@@ -13,5 +13,6 @@ public enum ControllerPresentationStyle {
     public enum PushedStyle {
         case `default`
         case fade
+        case slide
     }
 }

@@ -64,6 +64,16 @@ open class Router: RouterInterface {
     }
     // ...........
     
+    public func slideTo(module: Module) {
+        navigationController?.slide(module: module)
+    }
+    // ...........
+    
+    public func unslide() {
+        navigationController?.unslide()
+    }
+    // ...........
+    
     public func hideSuitably() {
         controller.hideSuitably()
     }

@@ -49,6 +49,9 @@ extension UIViewController {
                 // ...........
             case .fade:
                 navigationController?.unfade()
+                // ...........
+            case .slide:
+                navigationController?.unslide()
             }
         }
     }
@@ -75,6 +78,9 @@ extension UIViewController {
                 // ...........
             case .fade:
                 navigationController?.unfade(to: controllerType)
+                // ...........
+            case .slide:
+                navigationController?.unslide(to: controllerType)
             }
         }
     }
