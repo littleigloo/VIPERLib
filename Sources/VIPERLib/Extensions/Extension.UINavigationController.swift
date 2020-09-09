@@ -27,6 +27,22 @@ public extension UINavigationController {
     }
     // ...........
     
+    func push<T: UIViewController>(module: Module, removing types: [T.Type], isAnimated: Bool = true) {
+        // Get controller
+        let vc = module.getController()
+        // Set presentation
+        if let presentationSylable = (vc as? PresentationSylable) {
+            presentationSylable.controllerPresentationStyle = .pushed(.default)
+        }
+        // Remove specific controllers
+        var viewControllerList = viewControllers.filter({ (viewController) -> Bool in
+            return !types.contains(where: { String(describing: type(of: viewController)) == String(describing: $0)})
+        })
+        viewControllerList.append(vc)
+        setViewControllers(viewControllerList, animated: isAnimated)
+    }
+    // ...........
+    
     func fadeTo(module: Module) {
         let vc = module.getController()
         if let presentationSylable = (vc as? PresentationSylable) {

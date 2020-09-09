@@ -49,6 +49,11 @@ open class Router: RouterInterface {
     }
     // ...........
     
+    public func push<T: UIViewController>(module: Module, removing types: [T.Type], isAnimated: Bool = true) {
+        navigationController?.push(module: module, removing: types, isAnimated: isAnimated)
+    }
+    // ...........
+    
     public func popModule(isAnimated: Bool = true) {
         navigationController?.popViewController(animated: isAnimated)
     }
