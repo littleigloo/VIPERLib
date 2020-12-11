@@ -26,7 +26,7 @@ public protocol ModuleInterface {
     
     // IN/OUT
     associatedtype InputInterface
-    associatedtype DelegateInterface: ClassProtocol
+    associatedtype DelegateInterface
     
     // CONTROLLER -> PRESENTER
     associatedtype ControllerToPresenterInterface

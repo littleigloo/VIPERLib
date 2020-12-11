@@ -15,8 +15,9 @@ open class Presenter<Module: ModuleInterface>: PresenterInterface {
     //  MARK: - PROPERTIES 🌐 PUBLIC
     // ////////////////////////////////////
     
-    public unowned var moduleDelegate: Module.DelegateInterface?
-    
+    public var moduleDelegate: Module.DelegateInterface? {
+        return _moduleDelegate as? Module.DelegateInterface
+    }
     // ...........
     
     public var controller: Module.PresenterToControllerInterface {
@@ -40,6 +41,7 @@ open class Presenter<Module: ModuleInterface>: PresenterInterface {
     // ////////////////////////////////////
     
     private unowned let _controller: AnyObject
+    private unowned let _moduleDelegate: AnyObject
     
     //  MARK: - INITS
     // ////////////////////////////////////
@@ -54,7 +56,7 @@ open class Presenter<Module: ModuleInterface>: PresenterInterface {
         self.interactor = interactor
         self.router = router
         self.model = model
-        self.moduleDelegate = moduleDelegate
+        _moduleDelegate = moduleDelegate as AnyObject
     }
     
     //  MARK: - LIFECYCLE
