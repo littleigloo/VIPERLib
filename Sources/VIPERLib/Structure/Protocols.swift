@@ -16,3 +16,6 @@ public protocol ViewPresenter: class {
 public protocol PresentationSylable: UIViewController {
     var controllerPresentationStyle: ControllerPresentationStyle? { get set }
 }
+// ...........
+public protocol ClassProtocol: class {
+}

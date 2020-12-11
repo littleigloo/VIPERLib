@@ -15,7 +15,7 @@ open class Presenter<Module: ModuleInterface>: PresenterInterface {
     //  MARK: - PROPERTIES 🌐 PUBLIC
     // ////////////////////////////////////
     
-    public var moduleDelegate: Module.DelegateInterface?
+    public unowned var moduleDelegate: Module.DelegateInterface?
     
     // ...........
     

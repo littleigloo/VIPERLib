@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "NibTools",
+        "repositoryURL": "https://github.com/epitonium/NibTools.git",
+        "state": {
+          "branch": null,
+          "revision": "ae1b99154724955880ec8dd1e14b492fbe4bf14d",
+          "version": "1.2.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
