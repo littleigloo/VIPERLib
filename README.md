@@ -21,4 +21,4 @@ Use `Swift Package Manager` to install.
 
 ## License
 
-`VIPERLib` is distributed under the terms and conditions of the [LICENSE]("https://github.com/littleigloo/VIPERLib/blob/master/LICENSE.md").
+`VIPERLib` is distributed under the terms and conditions of the [LICENSE](https://github.com/littleigloo/VIPERLib/blob/master/LICENSE.md).
