@@ -104,3 +104,4 @@ open class Router: RouterInterface {
         let safariViewController = SFSafariViewController(url: url)
         controller.present(safariViewController, animated: true)
     }
+}
