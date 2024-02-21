@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "viperlib",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/littleigloo/VIPERLib.git",
+      "state" : {
+        "revision" : "5aa17f0798ae17fae3352a0fe27b9725462c0a37",
+        "version" : "3.2.1"
+      }
+    }
+  ],
+  "version" : 2
+}

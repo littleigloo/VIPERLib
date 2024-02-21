@@ -1,20 +1,19 @@
 //
 //  Output.swift
-//  VIPER Implementation
 //
-//  Created by Vit Gir on 21/12/19.
-//  Copyright © 2019 Neiron Digital. All rights reserved.
+//
+//  Created by Vitalis Girsas on 30/1/24.
 //
 
 import Foundation
 // ...........
-public protocol InOutBinderProtocol: class {
+public protocol InOutBinderProtocol: AnyObject {
     associatedtype T
     var send: T? { get }
     var bind: ((T) -> ())? { get set }
 }
 // ...........
-public class OutputTo<T>: InOutBinderProtocol {
+final public class OutputTo<T>: InOutBinderProtocol {
     //  MARK: PROPERTIES 🌐 PUBLIC
     // ////////////////////////////////////
     public var send: T? {
@@ -36,5 +35,6 @@ public class OutputTo<T>: InOutBinderProtocol {
     //  MARK: - INITS
     // ////////////////////////////////////
     public init() {
+        // ✔️ NONE
     }
 }

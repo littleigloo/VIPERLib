@@ -1,0 +1,24 @@
+### Headers settings
+company: littleigloo
+
+### Xcode project settings
+project_name: VIPERImplementation
+xcodeproj_path: VIPERImplementation.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_target: VIPERImplementation
+
+# The file path for new modules
+project_file_path: VIPERImplementation/Modules
+
+# The Xcode group path to new modules
+project_group_path: VIPERImplementation/Modules
+
+### Catalogs
+catalogs:
+- 'https://github.com/littleigloo/Generamba-Template-Catalog.git'
+
+### Templates
+templates:
+- {name: viper_module}
