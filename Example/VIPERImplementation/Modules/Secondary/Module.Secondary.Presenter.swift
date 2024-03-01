@@ -25,6 +25,8 @@ final class SecondaryPresenter: Presenter<SecondaryModule> {
     ///     - interactor:       [Presentrer -> Interactor] Interface.
     ///     - router:           [Presentrer -> Router] Interface.
     ///
+    ///     - viewPresenter:    ViewPresenter
+    ///
     
 }
 

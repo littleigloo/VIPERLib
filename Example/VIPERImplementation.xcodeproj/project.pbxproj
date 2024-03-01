@@ -87,8 +87,7 @@
 				724808E3E6C638FE8D2C04B4 /* Module.Main.Interactor.swift */,
 				3804B92E69BCEFC0A2C33FE3 /* Module.Main.Router.swift */,
 			);
-			name = Main;
-			path = Main/Main;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		7C1C34E92B6ABD9300285755 /* Shared */ = {

@@ -25,6 +25,8 @@ final class MainPresenter: Presenter<MainModule> {
     ///     - interactor:       [Presentrer -> Interactor] Interface.
     ///     - router:           [Presentrer -> Router] Interface.
     ///
+    ///     - viewPresenter:    ViewPresenter
+    ///
     
     // MARK: - PROPERTIES 🔰 PRIVATE
     // ////////////////////////////////////

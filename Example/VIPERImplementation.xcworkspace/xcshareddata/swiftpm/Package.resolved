@@ -5,7 +5,7 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/littleigloo/VIPERLib.git",
       "state" : {
-        "revision" : "5aa17f0798ae17fae3352a0fe27b9725462c0a37",
+        "revision" : "36e7342563f66c691b7e2f6465d946a42effcef1",
         "version" : "3.2.1"
       }
     }

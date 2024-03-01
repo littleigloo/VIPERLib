@@ -20,6 +20,10 @@ open class Presenter<Module: ModuleInterface>: PresenterInterface {
         return _controller as! Module.PresenterToControllerInterface
     }
     // ...........
+    public var viewPresenter: ViewPresenter {
+        return _controller as! ViewPresenter
+    }
+    // ...........
     public let interactor: Module.PresenterToInteractorInterface
     public let router:  Module.PresenterToRouterInterface
     // ...........
