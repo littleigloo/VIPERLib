@@ -14,7 +14,7 @@ public protocol ControllerInterface: PresenterToControllerInterface {
     func assign(id: String)
     func bind(withPresenter presenter: Presenter)
     func bind(withView view: UIView)
-    func provideTextFields() -> [UITextField]
+    func validatableTexts() -> [TextValidatable]
     init()
 }
 

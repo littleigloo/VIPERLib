@@ -64,3 +64,9 @@ public func navigationStack(with modules: [ModuleProtocol], isBarHidden: Bool = 
     navigation.stack(.new, with: modules)
     return navigation
 }
+// ...........
+public protocol TextValidatable where Self: UITextField {
+    var pairTextField: UITextField? { get }
+    var isValid: Bool { get }
+    func handleValidation(for result: Bool)
+}

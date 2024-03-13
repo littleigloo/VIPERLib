@@ -40,6 +40,7 @@ open class Controller<Module: ModuleInterface>: UIViewController,
             return
         }
         view = temporaryRootView
+        assignTextFields()
     }
     // ...........
     deinit {
@@ -68,47 +69,16 @@ open class Controller<Module: ModuleInterface>: UIViewController,
         }
         isPresenterSet = true
         self.presenter = presenter
-        assignTextFields()
     }
     
     //                                      MARK: - TEXTS
     //..............................................................................................
-    open func provideTextFields() -> [UITextField] {
+    open func didValidatedText(withResult result: Bool) {
+        // ✔️ NONE
+    }
+    // ...........
+    open func validatableTexts() -> [TextValidatable] {
         []
-    }
-    // ...........
-    fileprivate func assignTextFields() {
-        // Get text fields
-        let textFields = provideTextFields()
-        guard !textFields.isEmpty else {
-            return
-        }
-        // Create recognizer
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(dismissControlls))
-        recognizer.cancelsTouchesInView = false
-        recognizer.isEnabled = false
-        recognizer.delegate = self
-        dismissControllsTapRecognizer = recognizer
-        view.addGestureRecognizer(recognizer)
-        // Set delegates
-        textFields.forEach({$0.delegate = self})
-    }
-    // ...........
-    @objc func dismissControlls() {
-        view.endEditing(true)
-    }
-    // ...........
-    private func endEditing() {
-        dismissControlls()
-        disableDismissControllsTapRecognizer()
-    }
-    // ...........
-    private func disableDismissControllsTapRecognizer() {
-        dismissControllsTapRecognizer?.isEnabled = false
-    }
-    // ...........
-    private func enableDismissControllsTapRecognizer() {
-        dismissControllsTapRecognizer?.isEnabled = true
     }
     // ...........
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -136,5 +106,55 @@ open class Controller<Module: ModuleInterface>: UIViewController,
             return true
         }
         return value
+    }
+    // ...........
+    @objc func dismissControlls() {
+        view.endEditing(true)
+    }
+    // ...........
+    @objc open func didEditingChanged(_ sender: UITextField) {
+        if let validatableText = sender as? TextValidatable {
+            validatableText.handleValidation(for: validatableText.isValid)
+        }
+        guard !validatableTexts().contains(where: { text in
+            !text.isValid
+        }) else {
+            didValidatedText(withResult: false)
+            return
+        }
+        didValidatedText(withResult: true)
+    }
+    // ...........
+    private func assignTextFields() {
+        // Get text fields
+        let textFields = validatableTexts()
+        guard !textFields.isEmpty else {
+            return
+        }
+        // Create recognizer
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(dismissControlls))
+        recognizer.cancelsTouchesInView = false
+        recognizer.isEnabled = false
+        recognizer.delegate = self
+        dismissControllsTapRecognizer = recognizer
+        view.addGestureRecognizer(recognizer)
+        // Set delegates
+        textFields.forEach { textField in
+            textField.delegate = self
+            textField.addTarget(self, action: #selector(didEditingChanged), for: .editingChanged)
+        }
+    }
+    // ...........
+    private func endEditing() {
+        dismissControlls()
+        disableDismissControllsTapRecognizer()
+    }
+    // ...........
+    private func disableDismissControllsTapRecognizer() {
+        dismissControllsTapRecognizer?.isEnabled = false
+    }
+    // ...........
+    private func enableDismissControllsTapRecognizer() {
+        dismissControllsTapRecognizer?.isEnabled = true
     }
 }
