@@ -71,6 +71,10 @@ open class Router: RouterInterface {
         navigationController?.push(module: module, isAnimated: isAnimated)
     }
     // ...........
+    public func push(modules: [ModuleProtocol], isAnimated: Bool = true) {
+        navigationController?.push(modules: modules, isAnimated: isAnimated)
+    }
+    // ...........
     public func push<T: UIViewController>(module: ModuleProtocol, removing types: [T.Type], isAnimated: Bool = true) {
         navigationController?.push(module: module, removing: types, isAnimated: isAnimated)
     }

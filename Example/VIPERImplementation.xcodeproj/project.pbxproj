@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,11 +13,12 @@
 		7C1C34EE2B6ABE1700285755 /* Manager.Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C34ED2B6ABE1700285755 /* Manager.Network.swift */; };
 		7C1C34F22B6AC46600285755 /* Request.UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C34F12B6AC46600285755 /* Request.UserData.swift */; };
 		7C1C34F42B6AC48400285755 /* Response.UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C34F32B6AC48400285755 /* Response.UserData.swift */; };
+		7C274E142C022E4100C23B70 /* VIPERLib in Frameworks */ = {isa = PBXBuildFile; productRef = 7C274E132C022E4100C23B70 /* VIPERLib */; };
+		7C274E172C0231C500C23B70 /* VIPERLib in Frameworks */ = {isa = PBXBuildFile; productRef = 7C274E162C0231C500C23B70 /* VIPERLib */; };
 		7C35D8E82B683FC500CE57D0 /* Manager.Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D8E72B683FC500CE57D0 /* Manager.Module.swift */; };
 		7C35D8EB2B6840A600CE57D0 /* Manager.Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D8EA2B6840A600CE57D0 /* Manager.Environment.swift */; };
 		7C35D8ED2B6840F700CE57D0 /* SetupConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35D8EC2B6840F700CE57D0 /* SetupConsole.swift */; };
 		7C701B982B692D0800CBF100 /* Module.Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C701B972B692D0800CBF100 /* Module.Main.xib */; };
-		7C8391112B86720200155459 /* VIPERLib in Frameworks */ = {isa = PBXBuildFile; productRef = 7C8391102B86720200155459 /* VIPERLib */; };
 		7CB23FE32B68381200E4AE84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB23FE22B68381200E4AE84 /* AppDelegate.swift */; };
 		7CB23FEC2B68381300E4AE84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CB23FEB2B68381300E4AE84 /* Assets.xcassets */; };
 		7CB23FEF2B68381300E4AE84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CB23FED2B68381300E4AE84 /* LaunchScreen.storyboard */; };
@@ -69,8 +70,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C274E172C0231C500C23B70 /* VIPERLib in Frameworks */,
 				7CEB95182B6847200007D14E /* VIPERLib in Frameworks */,
-				7C8391112B86720200155459 /* VIPERLib in Frameworks */,
+				7C274E142C022E4100C23B70 /* VIPERLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +233,8 @@
 			name = VIPERImplementation;
 			packageProductDependencies = (
 				7CEB95172B6847200007D14E /* VIPERLib */,
-				7C8391102B86720200155459 /* VIPERLib */,
+				7C274E132C022E4100C23B70 /* VIPERLib */,
+				7C274E162C0231C500C23B70 /* VIPERLib */,
 			);
 			productName = VIPERImplementation;
 			productReference = 7CB23FDF2B68381200E4AE84 /* VIPERImplementation.app */;
@@ -262,7 +265,7 @@
 			);
 			mainGroup = 7CB23FD62B68381200E4AE84;
 			packageReferences = (
-				7C83910F2B86720200155459 /* XCRemoteSwiftPackageReference "VIPERLib" */,
+				7C274E152C0231C500C23B70 /* XCLocalSwiftPackageReference ".." */,
 			);
 			productRefGroup = 7CB23FE02B68381200E4AE84 /* Products */;
 			projectDirPath = "";
@@ -529,21 +532,20 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		7C83910F2B86720200155459 /* XCRemoteSwiftPackageReference "VIPERLib" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/littleigloo/VIPERLib.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.2.1;
-			};
+/* Begin XCLocalSwiftPackageReference section */
+		7C274E152C0231C500C23B70 /* XCLocalSwiftPackageReference ".." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ..;
 		};
-/* End XCRemoteSwiftPackageReference section */
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7C8391102B86720200155459 /* VIPERLib */ = {
+		7C274E132C022E4100C23B70 /* VIPERLib */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7C83910F2B86720200155459 /* XCRemoteSwiftPackageReference "VIPERLib" */;
+			productName = VIPERLib;
+		};
+		7C274E162C0231C500C23B70 /* VIPERLib */ = {
+			isa = XCSwiftPackageProductDependency;
 			productName = VIPERLib;
 		};
 		7CEB95172B6847200007D14E /* VIPERLib */ = {

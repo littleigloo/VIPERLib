@@ -92,6 +92,15 @@ public extension UINavigationController {
         pushViewController(vc, animated: isAnimated)
     }
     // ...........
+    func push(modules: [ModuleProtocol], isAnimated: Bool = true) {
+        // Get controllers and set presentation styles
+        let vcs = modules.map { module in
+            getController(from: module, forPresentationStyle: .pushed(.default))
+        }
+        // Execute
+        setViewControllers(viewControllers + vcs, animated: isAnimated)
+    }
+    // ...........
     func push<T: UIViewController>(module: ModuleProtocol, removing types: [T.Type], isAnimated: Bool = true) {
         // Get controller and set presentation style
         let vc = getController(from: module, forPresentationStyle: .pushed(.default))
