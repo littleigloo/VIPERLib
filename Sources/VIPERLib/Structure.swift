@@ -62,10 +62,27 @@ public protocol PresentationSylable: UIViewController {
     var controllerPresentationStyle: ControllerPresentationStyle? { get set }
 }
 // ...........
+class ViperNavigationController: UINavigationController {
+    let isInteractivePopGestureRecognizerEnabled: Bool
+    // ...........
+    init(isInteractivePopGestureRecognizerEnabled: Bool) {
+        self.isInteractivePopGestureRecognizerEnabled = isInteractivePopGestureRecognizerEnabled
+        super.init()
+    }
+    // ...........
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    // ...........
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.isEnabled = isInteractivePopGestureRecognizerEnabled
+    }
+}
+// ...........
 public func navigationStack(with modules: [ModuleProtocol], isBarHidden: Bool = false) -> ModuleProtocol {
-    let navigation = UINavigationController()
+    let navigation = ViperNavigationController(isInteractivePopGestureRecognizerEnabled: VIPER.isInteractivePopGestureRecognizerEnabled)
     navigation.navigationBar.isHidden = isBarHidden
-    navigation.interactivePopGestureRecognizer?.isEnabled = VIPER.isInteractivePopGestureRecognizerEnabled
     navigation.stack(.new, with: modules)
     return navigation
 }
