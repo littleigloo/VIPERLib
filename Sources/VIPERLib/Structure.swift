@@ -24,10 +24,12 @@ public class VIPER {
     internal static var logAdapter: LogAdapter = BaseAdapter()
     internal static var isPringingDebug = false
     internal static var isPringingReleases = true
+    internal static var isInteractivePopGestureRecognizerEnabled = true
     // ...........
     public static func setup(logAdapter: LogAdapter? = nil,
                              isPringingDebug: Bool? = nil,
-                             isPringingReleases: Bool? = nil) {
+                             isPringingReleases: Bool? = nil,
+                             isInteractivePopGestureRecognizerEnabled: Bool? = nil) {
         
         if let logAdapter = logAdapter {
             self.logAdapter = logAdapter
@@ -37,6 +39,9 @@ public class VIPER {
         }
         if let isPringingReleases = isPringingReleases {
             self.isPringingReleases = isPringingReleases
+        }
+        if let isInteractivePopGestureRecognizerEnabled = isInteractivePopGestureRecognizerEnabled {
+            self.isInteractivePopGestureRecognizerEnabled = isInteractivePopGestureRecognizerEnabled
         }
     }
 }
@@ -60,7 +65,7 @@ public protocol PresentationSylable: UIViewController {
 public func navigationStack(with modules: [ModuleProtocol], isBarHidden: Bool = false) -> ModuleProtocol {
     let navigation = UINavigationController()
     navigation.navigationBar.isHidden = isBarHidden
-    navigation.interactivePopGestureRecognizer?.isEnabled = !isBarHidden
+    navigation.interactivePopGestureRecognizer?.isEnabled = VIPER.isInteractivePopGestureRecognizerEnabled
     navigation.stack(.new, with: modules)
     return navigation
 }
